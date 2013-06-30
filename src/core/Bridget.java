@@ -7,17 +7,17 @@ public class Bridget extends Bot {
 	/**
 	 * Bot's nickname on IRC
 	 */
-	private static String botName = "BridgetTheMidget";
+	private static String botName = "BtM_BOT";
 	
 	/**
 	 * Bot's "real name" (for WHOIS)
 	 */
-	private static String realName = "ChatBot";
+	private static String realName = "BridgetTheMidget";
 	
 	/**
 	 * Version Information (for WHOIS)
 	 */
-	private static String versionInfo = "ChatBot 0.0.1 IRC Bot";
+	private static String versionInfo = "BridgetTheMiget IRC Bot v0.0.1";
 	
 	/**
 	 * IRC Server Address (eg. irc.geekshed.net)
@@ -27,12 +27,12 @@ public class Bridget extends Bot {
 	/**
 	 * List of all the channels the bot should connect to
 	 */
-	private static String[] channels = {"#cvchat","#cvchat-dev"};
+	private static String[] channels = {"#cvchat"};
 	
 	/**
 	 * NickServ password (only needed for registered nicks)
 	 */
-	private static String nickServPass = "-info@coinvisitor.com-01";
+	private static String nickServPass = "";
 
 	
 	/**
