@@ -23,7 +23,7 @@ public class HelloWorld {
 	public static void run(Bot bot, String channel,  String sender, String message) {
 
 		if(message.matches("^[bB]ridget(.*)!"))
-			bot.sendMessage(channel, sender + " don't rape me! :( ..");
+			bot.sendMessage(channel, "(╯°□°）╯︵ ┻━┻ *" + sender + "*");
 
 		else if(message.matches("(.*)[hH]ey(.*)|(.*)[hH]ello(.*)"))
 			bot.sendMessage(channel, "hey " + sender + "!");

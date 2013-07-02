@@ -7,12 +7,12 @@ public class Bridget extends Bot {
 	/**
 	 * Bot's nickname on IRC
 	 */
-	private static String botName = "BtM_BOT";
+	private static String botName = "Bridget";
 	
 	/**
 	 * Bot's "real name" (for WHOIS)
 	 */
-	private static String realName = "BridgetTheMidget";
+	private static String realName = "Bridget";
 	
 	/**
 	 * Version Information (for WHOIS)
@@ -68,12 +68,30 @@ public class Bridget extends Bot {
 			HelloWorld.run(this, channel, sender, message);
 
 		//...
-		if (RandomPrize.test(message))
-  		RandomPrize.run(this, channel, sender, message);
+		if (PrizeWin.test(message))
+			PrizeWin.run(this, channel, sender, message);
 		
 		//...
 		if (UserBalance.test(message))
   		UserBalance.run(this, channel, sender, message);
+		
+		//...
+		if (SubmitLink.test(message))
+			SubmitLink.run(this, channel, sender, message);
+		
+	}
+	
+	/**
+	 * onPrivateMessage
+	 * 
+	 * Load any extensions we want our Bot to handle for private messages
+	 */
+	public void onPrivateMessage(String sender, String login, String hostname, String message) {
+		
+		//...
+		if (UserBalance.test(message))
+  		UserBalance.run(this, null, sender, message);
+		
 		
 	}
 

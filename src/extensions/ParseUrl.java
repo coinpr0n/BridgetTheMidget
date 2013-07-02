@@ -67,8 +67,10 @@ public class ParseUrl {
 
 								if (inputLine.matches("(.*)/title>(.*)")) {
 									//System.out.println(inputLine.split(">")[1].split("<")[0]);
-									bot.sendMessage(channel, "[ " + inputLine.split(">")[1].split("<")[0] + " ]");
-									titleFound  = true;
+									try {
+										bot.sendMessage(channel, "[ " + inputLine.split(">")[1].split("<")[0] + " ]");
+										titleFound  = true;
+									} catch (ArrayIndexOutOfBoundsException e) {/*e*/}
 								}
 
 							}

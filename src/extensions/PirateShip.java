@@ -19,6 +19,7 @@ public class PirateShip {
 		"http://federicodelossantos.com/fede_blog/wp-content/uploads/2009/08/sexy-pirate-5.jpg",
 		"http://www.gothikas.es/fotos-disfraces-sexy/disfraz-sexy-pirata.jpg",
 		"http://cdn.indulgy.com/kA/46/OA/11919P1318469409943.jpg",
+		"http://thumbs.xrateddolls.com/rt/content/688.jpg",
 		"http://emailsfromgrandpa.com/wp-content/uploads/2012/06/sexy-pirate-girl-with-parrot.jpg",
 		"http://blog.celebritymovieblog.com/wp-content/uploads/post_thumbs/keira_knightley_nude_pirate.jpg"
 	};
@@ -43,17 +44,7 @@ public class PirateShip {
 	 * @param message
 	 */
 	public static void run(Bot bot, String channel, String sender, String message) {
-		bot.sendMessage(channel, "Cabin Crew " + randomImage());
-	}
-	
-	/**
-	 * Grabs a random image from the images[] array
-	 * 
-	 * @return random image from the (built-in) images[] array
-	 */
-	public static String randomImage() {
-		int i = (int) (Math.random() * images.length);
-		return images[i];
+		bot.sendRandomMessage(images, channel, "Cabin Crew");
 	}
 
 }

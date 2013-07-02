@@ -33,5 +33,12 @@ public class Bot extends PircBot {
 	public void identNickServ(String nickServPass) {
 		sendMessage("NickServ", "IDENTIFY " + nickServPass);
 	}
+	
+	//
+	// identNickServ - Identify to NickServ using a password
+	public void sendRandomMessage(String[] items, String channel, String message) {
+		int i = (int) (Math.random() * items.length);
+		sendMessage(channel, message + " " + items[i]);
+	}
 
 }

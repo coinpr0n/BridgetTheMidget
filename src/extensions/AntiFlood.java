@@ -4,14 +4,17 @@
 package extensions;
 
 import core.Bot;
+import core.Logger;
 
 public class AntiFlood {
 
 	/*private static String lastMessage1 = "lastMessage1";
 	private static String lastMessage2 = "lastMessage2";
 	private static String lastMessage3 = "lastMessage3";*/
-	private static int intTime = (int) System.currentTimeMillis();
+	private static int intTime = (int) System.currentTimeMillis() - 5000;
 	private static String lastSender = "initSender";
+	private static boolean warn1 = false;
+	private static boolean warn2 = false;
 	/*private static String lastTime = "initTime";
 	private static String lastSender = "initSender";*/
 	
@@ -20,18 +23,28 @@ public class AntiFlood {
 	}
 	
 	public static void run(Bot bot, String res,  String sender, String s) {
-		//intTime = (int) System.currentTimeMillis();
 		
 		int now = (int) System.currentTimeMillis();
 		int threshold = now - intTime;
 		intTime = now;
-		if (threshold < 1500) {
-			System.out.println("WARNING! Flood ...");
-			if (sender.equals(lastSender) && !lastSender.equalsIgnoreCase("SatoshiVICE")) {
-				bot.kick(res, sender, sender + "Welcome to my demon-haunted world! :)~~");
+		if (threshold < 1200) {
+			Logger.warn("Flood WARNING!");
+			//System.out.println(Colors._RED + "WARNING! Flood: " + String.format("%d", threshold) + Colors._NORMAL);
+			if (warn1 == true && warn2 == true) {
+				if (sender.equals(lastSender) && !lastSender.equalsIgnoreCase("SatoshiVICE")) {
+					//bot.kick(res, sender, "Welcome to my demon-haunted world " + sender + "! :)~~");
+					Logger.warn(">> KICKING " + sender);
+					//System.out.println(Colors._RED + ">> KICKING " + sender + Colors._NORMAL);
+				}
+			} else {
+				if (warn1 == true) warn2 = true;
+				else warn1 = true;
 			}
 		} else {
-			System.out.println("Flood Threshold: " + String.format("%d", threshold));
+			warn1 = false;
+			warn2 = false;
+			Logger.info("Flood: " + String.format("%d", threshold));
+			//System.out.println(Colors._CYAN + "Flood: " + String.format("%d", threshold) + Colors._NORMAL);
 		}
 		lastSender = sender;
 		
