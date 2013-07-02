@@ -11,6 +11,9 @@
     <property name="source" value="1.7"/>
     <path id="BridgetTheMidget.classpath">
         <pathelement location="bin"/>
+        <pathelement location="lib/jackson-databind-2.2.0.jar"/>
+        <pathelement location="lib/jackson-core-2.2.1.jar"/>
+        <pathelement location="lib/jackson-annotations-2.2.0.jar"/>
         <pathelement location="lib/pircbot.jar"/>
     </path>
     <target name="init">
@@ -48,8 +51,13 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="Main">
+    <target name="Bridget">
         <java classname="core.Main" failonerror="true" fork="yes">
+            <classpath refid="BridgetTheMidget.classpath"/>
+        </java>
+    </target>
+    <target name="Gambler">
+        <java classname="extensions.Gambler" failonerror="true" fork="yes">
             <classpath refid="BridgetTheMidget.classpath"/>
         </java>
     </target>
