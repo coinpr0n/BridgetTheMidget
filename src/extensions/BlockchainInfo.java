@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Ticker {
+public class BlockchainInfo {
 
 	/**
 	 * Flag when URL's title has been found so as to stop reading more HTML.
