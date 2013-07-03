@@ -7,7 +7,17 @@ public class Bot extends PircBot {
 	private String ircAddress;
 	private String[] channels;
 	private String nickServPass;
-	
+
+	/**
+	 * Bot constructor
+	 *
+	 * @param name
+	 * @param login
+	 * @param version
+	 * @param ircAddress
+	 * @param channels
+	 * @param nickServPass
+	 */
 	public Bot(String name, String login, String version, String ircAddress, String[] channels, String nickServPass) {
 		setVerbose(true);
 		setName(name);
@@ -18,28 +28,29 @@ public class Bot extends PircBot {
 		this.nickServPass = nickServPass;
 	}
 
-	//
-	// start - connects to server, identifies and joins channels
+	/**
+	 * Connects bot to IRC server and identifies with NickServ (if necessary).
+	 */
 	public void start() {
 		try {
 			this.connect(ircAddress);
-			if (nickServPass != "") this.identNickServ(nickServPass);
+			//if (nickServPass != "") this.identNickServ(nickServPass);
+			if (nickServPass != null) this.identify(nickServPass);
 			for (int i=0;i < channels.length;i++) this.joinChannel(channels[i]);
 		} catch (NickAlreadyInUseException e) {
-			Logger.error("(NickAlreadyInUseException)");
+			Logger.error("(NickAlreadyInUseException)");/* TODO: changeNick() */
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	//
-	// identNickServ - Identify to NickServ using a password
-	public void identNickServ(String nickServPass) {
-		sendMessage("NickServ", "IDENTIFY " + nickServPass);
-	}
-	
-	//
-	// identNickServ - Identify to NickServ using a password
+
+	/**
+	 * Sends message followed by a random element selected from an array items.
+	 *
+	 * @param items
+	 * @param channel
+	 * @param message
+	 */
 	public void sendRandomMessage(String[] items, String channel, String message) {
 		int i = (int) (Math.random() * items.length);
 		sendMessage(channel, message + " " + items[i]);
