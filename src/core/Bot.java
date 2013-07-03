@@ -19,6 +19,7 @@ public class Bot extends PircBot {
 	 * @param nickServPass
 	 */
 	public Bot(String name, String login, String version, String ircAddress, String[] channels, String nickServPass) {
+		setAutoNickChange(true);
 		setVerbose(true);
 		setName(name);
 		setLogin(login);
@@ -34,11 +35,8 @@ public class Bot extends PircBot {
 	public void start() {
 		try {
 			this.connect(ircAddress);
-			//if (nickServPass != "") this.identNickServ(nickServPass);
 			if (nickServPass != null) this.identify(nickServPass);
 			for (int i=0;i < channels.length;i++) this.joinChannel(channels[i]);
-		} catch (NickAlreadyInUseException e) {
-			Logger.error("(NickAlreadyInUseException)");/* TODO: changeNick() */
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -57,7 +57,7 @@ public class UserBalance {
 				bot.sendMessage(sender, "Delayed: " + delayed + " - Pending: " + pending + " - Sent: " + sent);
 				
 			} catch (NullPointerException e) {
-				bot.sendMessage(sender, "Delayed: 0.00000000 BTC - Pending: 0.00000000 BTC - Sent: 0.00000000 BTC");
+				bot.sendMessage(sender, "Delayed: 0.00000000 - Pending: 0.00000000 - Sent: 0.00000000");
 			}
 		
 		// "!withdraw" command

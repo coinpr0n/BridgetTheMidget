@@ -66,6 +66,10 @@ public class Bridget extends Bot {
 			ParseUrl.run(this, channel, sender, message);
 
 		//...
+		if (BlockchainInfo.test(message))
+			BlockchainInfo.run(this, channel, sender, message);
+
+		//...
 		if (PirateShip.test(message))
 			PirateShip.run(this, channel, sender, message);
 

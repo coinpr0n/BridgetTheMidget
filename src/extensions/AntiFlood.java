@@ -34,7 +34,7 @@ public class AntiFlood {
 				//System.out.println(Colors._RED + "WARNING! Flood: " + String.format("%d", threshold) + Colors._NORMAL);
 				if (warn1 == true && warn2 == true) {
 					if (sender.equals(lastSender) && !lastSender.equalsIgnoreCase("SatoshiVICE")) {
-						//bot.kick(res, sender, "Welcome to my demon-haunted world " + sender + "! :)~~");
+						bot.kick(res, sender, "Welcome to my demon-haunted world " + sender + "! :)~~");
 						Logger.warn(">> KICKING " + sender);
 						//System.out.println(Colors._RED + ">> KICKING " + sender + Colors._NORMAL);
 					}
