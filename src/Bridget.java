@@ -13,7 +13,7 @@ public class Bridget extends Bot {
 	/**
 	 * Bot's nickname on IRC
 	 */
-	private static String botName = "BridgetTheMidget";
+	private static String botName = "Bridget";
 
 	/**
 	 * Bot's "real name" (for WHOIS)
@@ -38,7 +38,7 @@ public class Bridget extends Bot {
 	/**
 	 * NickServ password (only needed for registered nicks)
 	 */
-	private static String nickServPass = "-info@coinvisitor.com-01";
+	private static String nickServPass = "";
 
 
 	/**
