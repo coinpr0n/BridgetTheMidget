@@ -3,20 +3,22 @@
 //	Get the title of a URL
 package extensions;
 
-import core.Balance;
 import core.Bot;
 import core.Config;
 import core.Logger;
-import core.Users;
 
 import java.io.File;
 import java.io.IOException;
 
 import org.jibble.pircbot.Colors;
 
+import users.Balance;
+import users.Users;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 
 public class UserBalance {

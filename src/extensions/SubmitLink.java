@@ -13,7 +13,6 @@ public class SubmitLink {
 
 	private static int MAX_LINKS = 10;
   private static String[] links = new String[MAX_LINKS];
-	private static int index = 0;
 	private static boolean init = false;
 	
 	/**
@@ -43,19 +42,20 @@ public class SubmitLink {
 		}
 		
 		// command "!submit"
+		int index = 0;
 		if (message.matches("^[.!][sS]ubmit(.*)")) {
 			String[] words = message.split("\\s");
 			for (String word : words) {
 				if (word.matches("^http(s)?://(.*)")) {
 					links[index] = word;
-					index++;
-					if (index == MAX_LINKS) index = 0;
 				}
+				index++;
+				if (index >= MAX_LINKS) index = 0;
 			}
 			
 		// command "!view"
 		} else if (message.matches("^[.!][vV]iew[aA]ll(.*)")) {
-			for (int i = 0; i < 9; i++) bot.sendMessage(channel, "> " + links[i]);
+			for (int i = 0; i < 10; i++) bot.sendMessage(channel, "> " + links[i]);
 		} else if (message.matches("^[.!][vV]iew(.*)")) {
 					bot.sendRandomMessage(links, channel, "Link:");
 		}

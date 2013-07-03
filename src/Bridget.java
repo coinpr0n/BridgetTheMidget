@@ -1,5 +1,6 @@
-package core;
 
+
+import core.Bot;
 import extensions.*;
 
 public class Bridget extends Bot {

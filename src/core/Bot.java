@@ -25,7 +25,11 @@ public class Bot extends PircBot {
 			this.connect(ircAddress);
 			if (nickServPass != "") this.identNickServ(nickServPass);
 			for (int i=0;i < channels.length;i++) this.joinChannel(channels[i]);
-		} catch (Exception e) { e.printStackTrace(); }
+		} catch (NickAlreadyInUseException e) {
+			Logger.error("(NickAlreadyInUseException)");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	//

@@ -24,30 +24,33 @@ public class AntiFlood {
 	
 	public static void run(Bot bot, String res,  String sender, String s) {
 		
-		int now = (int) System.currentTimeMillis();
-		int threshold = now - intTime;
-		intTime = now;
-		if (threshold < 1200) {
-			Logger.warn("Flood WARNING!");
-			//System.out.println(Colors._RED + "WARNING! Flood: " + String.format("%d", threshold) + Colors._NORMAL);
-			if (warn1 == true && warn2 == true) {
-				if (sender.equals(lastSender) && !lastSender.equalsIgnoreCase("SatoshiVICE")) {
-					//bot.kick(res, sender, "Welcome to my demon-haunted world " + sender + "! :)~~");
-					Logger.warn(">> KICKING " + sender);
-					//System.out.println(Colors._RED + ">> KICKING " + sender + Colors._NORMAL);
+		if (!sender.matches("(.*)[bB][oO][tT](.*)|(.*)Satoshi[DV]ICE(.*)")) {
+		
+			int now = (int) System.currentTimeMillis();
+			int threshold = now - intTime;
+			intTime = now;
+			if (threshold < 1200) {
+				Logger.warn("Flood WARNING!");
+				//System.out.println(Colors._RED + "WARNING! Flood: " + String.format("%d", threshold) + Colors._NORMAL);
+				if (warn1 == true && warn2 == true) {
+					if (sender.equals(lastSender) && !lastSender.equalsIgnoreCase("SatoshiVICE")) {
+						//bot.kick(res, sender, "Welcome to my demon-haunted world " + sender + "! :)~~");
+						Logger.warn(">> KICKING " + sender);
+						//System.out.println(Colors._RED + ">> KICKING " + sender + Colors._NORMAL);
+					}
+				} else {
+					if (warn1 == true) warn2 = true;
+					else warn1 = true;
 				}
 			} else {
-				if (warn1 == true) warn2 = true;
-				else warn1 = true;
+				warn1 = false;
+				warn2 = false;
+				Logger.info("Flood: " + String.format("%d", threshold));
+				//System.out.println(Colors._CYAN + "Flood: " + String.format("%d", threshold) + Colors._NORMAL);
 			}
-		} else {
-			warn1 = false;
-			warn2 = false;
-			Logger.info("Flood: " + String.format("%d", threshold));
-			//System.out.println(Colors._CYAN + "Flood: " + String.format("%d", threshold) + Colors._NORMAL);
+			lastSender = sender;
+			
 		}
-		lastSender = sender;
-		
 		//bot.log(sender + System.currentTimeMillis() + s);
 		/*if (s.equals(lastMessage1) && s.equals(lastMessage2) && s.equals(lastMessage3)) {
 			//kick

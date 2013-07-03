@@ -1,15 +1,19 @@
-//
-//	RandomPrize
-//	Returns the current date and time
+/**
+ * PrizeWin
+ * 
+ * Random prizes for some of the messages sent to a channel 
+ * 
+ */
 package extensions;
 
-import core.Balance;
 import core.Bot;
 import core.Config;
 import core.Logger;
-import core.Users;
 
 import org.jibble.pircbot.Colors;
+
+import users.Balance;
+import users.Users;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -48,7 +52,7 @@ public class PrizeWin {
 		
 		double prizeValue = 0.00000000;
 
-		if (!sender.equalsIgnoreCase("SatoshiVICE") && !message.matches("^[.!](.*)")) {
+		if (!sender.matches("(.*)[bB][oO][tT](.*)|(.*)Satoshi[DV]ICE(.*)") && !message.matches("^[.!](.*)")) {
 			
 			ObjectMapper mapper = new ObjectMapper();
 			
@@ -122,7 +126,7 @@ public class PrizeWin {
 				}
 
 				Logger.info(Logger.BOLD_GREEN + sender + " GRAND PRIZE!!");
-				bot.sendMessage(channel, Colors.BOLD + sender + Colors.GREEN + " (+ " + Colors.BOLD + "0.0001 BTC" + ")" + Colors.NORMAL);
+				bot.sendMessage(channel, Colors.BOLD + sender + Colors.BOLD + Colors.GREEN + " (+ 0.0001 BTC" + ")" + Colors.NORMAL);
 				
 			}
 		
@@ -144,7 +148,7 @@ public class PrizeWin {
 			Users user = mapper.readValue(new File(Config.getUserTemplate()), Users.class);
 			Balance balance = user.getBalance();
 			user.setUsername(sender);
-			user.setAddress("To set your wallet: !setbitcoin <ADDRESS>");
+			user.setAddress("(change with '!setbitcoin <ADDRESS>')");
 			balance.setDelayed(String.format("%.8f", prizeValue));
 			balance.setPending("0.00000000");
 			balance.setSent("0.00000000");
